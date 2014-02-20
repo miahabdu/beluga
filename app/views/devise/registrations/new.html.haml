@@ -1,0 +1,29 @@
+!!!
+%html.login-bg
+  %head
+    %title Gastro Chub - Sign up
+    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+  %body
+    .header
+      %a{href: "#{root_path}"}
+        / %img.logo{alt: "logo", src: "/assets/logo.png"}/
+        GastroChub
+    .login-wrapper
+      .box
+        .content-wrap
+          = bootstrap_flash
+          %h6 Sign Up
+          = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+            = devise_error_messages!
+
+            = f.text_field :username, placeholder: "Username", class: "form-control"
+            - if f.object.password_required?
+              = f.password_field :password, placeholder: "Password", class: "form-control"
+              = f.password_field :password_confirmation, placeholder: "Confirm Password", class: "form-control"
+            .action
+              %a= f.submit "Sign up", class: "btn-glow primary signup"
+      .already
+        %p Already have an account?
+        = render "devise/shared/links"

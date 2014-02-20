@@ -1,0 +1,35 @@
+!!!
+%html.login-bg
+  %head
+    %title Gastro Chub - Sign in
+    =stylesheet_link_tag "bootstrap.css"
+    =stylesheet_link_tag "bootstrap-overrides.css"
+    =stylesheet_link_tag "layout.css"
+    =stylesheet_link_tag "elements.css"
+    =stylesheet_link_tag "font-awesome.css"
+    =stylesheet_link_tag "signin.css"
+    =stylesheet_link_tag "http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,800italic,400,300,600,700,800"
+    = csrf_meta_tags
+  %body
+
+    .login-wrapper
+      %a{href: "#{root_path}"}
+        / %img.logo{alt: "logo", src: "/assets/logo-white.png"}/
+        GastroChub
+      .box
+        .content-wrap
+          = bootstrap_flash
+          %h6 Log in
+          = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+
+            = f.text_field :username, placeholder: "Username", class: "form-control"
+            = f.password_field :password, placeholder: "Your Password", class: "form-control"
+            - if devise_mapping.rememberable?
+              .remember
+                = f.check_box :remember_me
+                = f.label :remember_me
+            = f.submit "Log in", class: "btn-glow primary login"
+          
+      .no-account
+        %p Don't have an account?
+        = render "devise/shared/links"
