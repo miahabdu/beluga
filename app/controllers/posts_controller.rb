@@ -75,5 +75,6 @@ class PostsController < ApplicationController
     def post_columns
       cols = Post.columns.map(&:name).map(&:to_sym) 
       cols - [:created_at, :updated_at]
+      cols +[:tag_list]
     end
 end
