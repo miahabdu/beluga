@@ -3,8 +3,9 @@ class Post < ActiveRecord::Base
 
   has_many :tag_posts
   has_many :tags, through: :tag_posts
+  has_many :images
 
-  accepts_nested_attributes_for :tags
+  accepts_nested_attributes_for :images
 
   def self.tagged_with(name)
     Tag.find_by_name!(name).posts

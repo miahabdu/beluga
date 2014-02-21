@@ -15,10 +15,12 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = Post.new
+    @post.images.build
   end
 
   # GET /posts/1/edit
   def edit
+    @post.images.build if @images.blank?
   end
 
   # POST /posts
@@ -65,16 +67,11 @@ class PostsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_post
       @post = Post.find(params[:id])
+      @images = Post.try(:images)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(post_columns)
-    end
-
-    def post_columns
-      cols = Post.columns.map(&:name).map(&:to_sym) 
-      cols - [:created_at, :updated_at]
-      cols +[:tag_list]
+      params.require(:post).permit(:title, :content, :category, :user_id, :tag_list, images_attributes: [:post_id, :filename, :name])
     end
 end
