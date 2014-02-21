@@ -20,9 +20,14 @@
         = f.text_field :tag_list, class: 'form-control', placeholder: "Enter tags seperated by commas ie 'bacon, meat, beer, cheese...'"
 
     = f.hidden_field :user_id, value: current_user.id
-
-    = f.fields_for :images, @images, html: { multipart: true } do |img|
-      = img.file_field :filename
+    - if @post.new_record?
+      = f.fields_for :images, html: { multipart: true } do |img|
+        = img.file_field :filename
+    - else
+      - if @post.images.any?
+        - @post.images.each do |i|
+          = image_tag i.filename_url(:thumb)
+          =link_to 'Edit Images', edit_image_path(i)
     .form-group
       .col-md-4
         = f.submit 'Save', class: 'btn btn-primary'
