@@ -1,19 +1,26 @@
-= form_for @post do |f|
-  - if @post.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@post.errors.count, "error")} prohibited this post from being saved:"
-      %ul
-        - @post.errors.full_messages.each do |msg|
-          %li= msg
-  = f.label :title
-  = f.text_field :title
+.col-md-8.col-md-offset-2
+  = form_for @post, html: { class: 'form-horizontal' } do |f|
+    - if @post.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@post.errors.count, "error")} prohibited this post from being saved:"
+        %ul
+          - @post.errors.full_messages.each do |msg|
+            %li= msg
+    .form-group
+      .col-md-12
+        = f.text_field :title, class: 'form-control', placeholder: 'Enter title'
+    .form-group
+      .col-md-12
+        = f.text_area :content, class: 'form-control', placeholder: 'Enter content here...', style: 'height: 250px'
+    .form-group
+      .col-md-12
+        = f.text_field :category, class: 'form-control', placeholder: 'Enter category'
 
-  = f.label :content
-  = f.text_area :content
+    = f.hidden_field :user_id, value: current_user.id
+    
+    .form-group
+      .col-md-4
+        = f.submit 'Save', class: 'btn btn-primary'
 
-  = f.label :category
-  = f.text_field :category
+        = link_to 'cancel', posts_path
 
-  = f.hidden_field :user_id, value: current_user.id
-  .actions
-    = f.submit 'Save'

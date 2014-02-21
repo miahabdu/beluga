@@ -1,6 +1,6 @@
 %h3= @post.title
-%p= "by #{@post.user.username} on #{@post.created_at.strftime("%B %d %Y")}"
-%p= @post.content
+%p= "by #{@post.user.username} on #{@post.created_at.strftime("%B %d %Y %X %p")}"
+%p= raw(@post.content)
 
 %a= @post.category
 
