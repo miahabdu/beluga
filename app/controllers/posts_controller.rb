@@ -15,7 +15,7 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = Post.new
-    @post.images.build
+    @post_image = @post.images.build
   end
 
   # GET /posts/1/edit
@@ -29,6 +29,9 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
+        params[:images][:filename].each do |i|
+          @post_image = @post.images.create!(filename: i, post_id: @post.id)
+        end
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
         format.json { render action: 'show', status: :created, location: @post }
       else
@@ -55,6 +58,7 @@ class PostsController < ApplicationController
   # DELETE /posts/1
   # DELETE /posts/1.json
   def destroy
+    @post.images.each { |f| f.delete } if @post.images.any?
     @post.destroy
     respond_to do |format|
       format.html { redirect_to posts_url }

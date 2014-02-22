@@ -21,8 +21,10 @@
 
     = f.hidden_field :user_id, value: current_user.id
     - if @post.new_record?
-      = f.fields_for :images, html: { multipart: true } do |img|
-        = img.file_field :filename
+      .form-group
+        .col-md-5
+          = f.fields_for :images, html: { multipart: true } do |img|
+            = img.file_field :filename, multiple: true, name: 'images[filename][]'
     - else
       - if @post.images.any?
         - @post.images.each do |i|
