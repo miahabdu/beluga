@@ -1,9 +1,128 @@
-%h3= @post.title
-%p= "by #{@post.user.username} on #{@post.created_at.strftime("%B %d %Y %X %p")}"
-%p= raw(@post.content)
-
-%a= @post.category
-
-= link_to 'Edit', edit_post_path(@post)
-\|
-= link_to 'Back', posts_path
+.section.section-no-margin-bottom.row.entries.bg-primary
+  %article.entry.style-grid.style-hero.hero-nav.type-post.col-xs-6.col-sm-6
+    %a{href: "single.html"}
+      %header.entry-header
+        %p.small Previous Story
+        %h3.entry-title Rumor: The long awaited update for Retina Display is ready to be annaunced on the next event held by them
+      %figure.entry-thumbnail
+        .overlay.overlay-primary
+        / to disable lazy loading, remove data-src and data-src-retina
+        %img{alt: "", "data-src" => "http://placehold.it/480x280", "data-src-retina" => "http://placehold.it/720x420", height: "280", src: "../assets/placeholder.gif", width: "480"}/
+        / fallback for no javascript browsers
+        %noscript
+          %img{alt: "", src: "http://placehold.it/480x280"}/
+  %article.entry.style-grid.style-hero.hero-nav.type-post.col-xs-6.col-sm-6
+    %a{href: "single-full.html"}
+      %header.entry-header
+        %p.small Next Story
+        %h3.entry-title Click here to see single blog post in full mode sit voluptatem accusantium doloremque laudantium
+      %figure.entry-thumbnail
+        .overlay.overlay-primary
+        / to disable lazy loading, remove data-src and data-src-retina
+        %img{alt: "", "data-src" => "http://placehold.it/480x280", "data-src-retina" => "http://placehold.it/720x420", height: "280", src: "../assets/placeholder.gif", width: "480"}/
+        / fallback for no javascript browsers
+        %noscript
+          %img{alt: "", src: "http://placehold.it/480x280"}/
+#content.content.section.row
+  .col-md-8.bg-base.col-lg-8.col-xl-9
+    .ribbon.ribbon-highlight
+      %ol.breadcrumb.ribbon-inner
+        %li
+          %a{href: "#"} Home
+        %li
+          %a{href: "#"} Social Media
+        %li.active{title: "Postman will send notifications to your flashy smartphone about popular people and their latest shouts"} Postman will send notifications ...
+    %header.page-header
+      / .page-meta.pull-right.hidden-xs
+      /   %a{href: "#comments"}
+      /     %span.comments-count-balloon.bg-primary
+      /       123
+      /       %em Comments
+      %h2.page-title
+        = @post.title
+    %article.entry.style-single.type-post
+      %figure.entry-thumbnail
+        / to disable lazy loading, remove data-src and data-src-retina
+        %img{alt: "", "data-src" => "http://placehold.it/680x452", "data-src-retina" => "http://placehold.it/1024x680", height: "452", src: "#{@post.images.first.filename_url}", width: "680"}/
+        / fallback for no javascript browsers
+        %noscript
+          %img{alt: "", src: "http://placehold.it/680x452"}/
+      .entry-meta.indented
+        %span.author
+          by
+          %a{href: "blog.html"}= @post.user.username
+        %span.entry-date
+          %a{href: "blog.html"}= "on #{@post.created_at.strftime("%B %d %Y")}"
+        %span.category
+          In
+          %a{href: "blog.html"}= @post.category
+      .entry-content.indented
+        = raw(@post.content)
+        /
+          sample for adding full image
+          <figure class="image image-full">
+          
+          <img src="../img/placeholder.gif" data-src="http://placehold.it/680x452" data-src-retina="http://placehold.it/1024x680" width="680" height="452" alt="">
+          
+          <noscript>
+          <img src="http://placehold.it/680x452" alt="">
+          </noscript>
+          
+          </figure>
+        
+    .after-entry.indented
+      %hr/
+      %aside.widget.post-tags
+        %i.icon-tags
+        Tags:
+        - @post.tags.each do |tag|
+          %a{href: "#"}= tag.name if tag
+      %hr/
+      %aside.widget.widget-author.media
+        %figure.entry-author-avatar.media-object.avatar.pull-left
+          / to disable lazy loading, remove data-src and data-src-retina
+          %img.img-circle{alt: "", "data-src" => "http://placehold.it/230x230", "data-src-retina" => "http://placehold.it/460x460", height: "230", src: "../assets/placeholder.gif", width: "230"}/
+          / fallback for no javascript browsers
+          %noscript
+            %img{alt: "", src: "http://placehold.it/230x230"}/
+        .media-body
+          %h4.entry-author-name
+            By
+            %a{href: "blog.html"}= @post.user.username
+          %p
+            Deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.
+      %hr/
+      %aside.widget
+        %h4.widget-title Related Posts
+        .entries.row
+          - Post.where(category: @post.category).each do |post|
+            %article.entry.type-post.style-thumbnail.col-xs-3.col-sm-3
+              %figure.entry-thumbnail
+                / to disable lazy loading, remove data-src and data-src-retina
+                %img{alt: "", "data-src" => "http://placehold.it/230x230", "data-src-retina" => "http://placehold.it/460x460", height: "230", src: "#{post.images.first.filename_url}", width: "230"}/
+                / fallback for no javascript browsers
+                %noscript
+                  %img{alt: "", src: "http://placehold.it/230x230"}/
+              %h3.entry-title
+                %a{href: post_path(post.id)}= post.title
+         
+      %hr/
+      %aside.widget
+        Share:
+        %a{href: "#", onclick: "window.open(\r\n\t\t\t\t\t\t\t\t'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), \r\n\t\t\t\t\t\t\t\t'facebook-share-dialog', \r\n\t\t\t\t\t\t\t\t'width=626,height=436'); \r\n\t\t\t\t\t\t\t\treturn false;"}
+          %span.icon-stack
+            %i.icon-sign-blank.icon-stack-base
+            %i.icon-facebook.icon-light
+        %a{href: "#", onclick: "window.open(\r\n\t\t\t\t\t\t\t\t'http://twitter.com/home?status='+encodeURIComponent(location.href), \r\n\t\t\t\t\t\t\t\t'facebook-share-dialog', \r\n\t\t\t\t\t\t\t\t'width=626,height=436'); \r\n\t\t\t\t\t\t\t\treturn false;"}
+          %span.icon-stack
+            %i.icon-sign-blank.icon-stack-base
+            %i.icon-twitter.icon-light
+        %a{href: "#", onclick: "window.open(\r\n\t\t\t\t\t\t\t\t'https://plus.google.com/share?url='+encodeURIComponent(location.href), \r\n\t\t\t\t\t\t\t\t'facebook-share-dialog', \r\n\t\t\t\t\t\t\t\t'width=500,height=436'); \r\n\t\t\t\t\t\t\t\treturn false;"}
+          %span.icon-stack
+            %i.icon-sign-blank.icon-stack-base
+            %i.icon-google-plus.icon-light
+        %a{href: "#", onclick: "javascript:void((function(){var e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','http://assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);document.body.appendChild(e)})());"}
+          %span.icon-stack
+            %i.icon-sign-blank.icon-stack-base
+            %i.icon-pinterest.icon-light
+  = render '/welcome/sidebar'

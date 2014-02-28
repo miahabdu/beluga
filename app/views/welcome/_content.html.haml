@@ -32,7 +32,7 @@
                     %a{href: "blog.html"}= post.category
               %p
                 = truncate(post.content, length: 232)
-                %a.more-link{href: "single.html"}
+                %a.more-link{href: post_path(post.id)}
                   Continue Reading
                   %i.icon.icon-long-arrow-right
     / /.entris
