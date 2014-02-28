@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require bootstrap-wysihtml5
+//= require prettyphoto-rails
 //= require_tree .

@@ -1,21 +1,29 @@
 !!!
-%html
+%html.no-js
   %head
+    %meta{content: "", name: "description"}/
+    / Mobile Devices Viewport Resset
+    %meta{content: "width=device-width, initial-scale=1.0, maximum-scale=1", name: "viewport"}/
+    %meta{content: "yes", name: "apple-mobile-web-app-capable"}/
+    %link{href: "http://fonts.googleapis.com/css?family=Droid+Sans:400,700|Lato:300,400,700,400italic,700italic|Droid+Serif", rel: "stylesheet", type: "text/css"}/
     %title GastroChub
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
   %body
-    - if user_signed_in?
-      Logged in as
-      = succeed "." do
-        %strong= current_user.username
-      = link_to 'Edit profile', edit_user_registration_path
-      |
-      \#{link_to "Logout", destroy_user_session_path, method: :delete}
-    - else
-      = link_to "Sign up", new_user_registration_path
-      |
-      \#{link_to "Login", new_user_session_path}
-    .container
+    %h1.sr-only Summarize
+    = render '/layouts/nav'
+    #main.container
+      - if user_signed_in?
+        Logged in as
+        = succeed "." do
+          %strong= current_user.username
+        = link_to 'Edit profile', edit_user_registration_path
+        |
+        \#{link_to "Logout", destroy_user_session_path, method: :delete}
+      - else
+        = link_to "Sign up", new_user_registration_path
+        |
+        \#{link_to "Login", new_user_session_path}
       = yield
+    = render '/layouts/footer'

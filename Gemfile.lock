@@ -136,6 +136,11 @@ GEM
     polyamorous (0.6.4)
       activerecord (>= 3.0)
     polyglot (0.3.4)
+    prettyphoto-rails (0.2.1)
+      jquery-rails
+      rails (>= 3.1)
+      sass-rails
+      uglifier
     quiet_assets (1.0.2)
       railties (>= 3.1, < 5.0)
     rack (1.5.2)
@@ -233,6 +238,7 @@ DEPENDENCIES
   paperclip (~> 3.0)
   pg
   pickadate-rails
+  prettyphoto-rails
   quiet_assets
   rails (= 4.0.0)
   rails_12factor

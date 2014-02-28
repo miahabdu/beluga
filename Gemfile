@@ -28,6 +28,7 @@ gem 'jquery-multiselect-rails', :git => 'git://github.com/arojoal/jquery-multise
 gem 'jquery-ui-themes'
 gem 'pickadate-rails'
 gem 'font-awesome-rails'
+gem 'prettyphoto-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'

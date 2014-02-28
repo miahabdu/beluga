@@ -29,8 +29,11 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        params[:images][:filename].each do |i|
-          @post_image = @post.images.create!(filename: i, post_id: @post.id)
+        @images = params[:images][:filename] rescue nil
+        if @images
+          @images.each do |i|
+            @post_image = @post.images.create!(filename: i, post_id: @post.id)
+          end
         end
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
         format.json { render action: 'show', status: :created, location: @post }

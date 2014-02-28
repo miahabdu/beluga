@@ -1,0 +1,42 @@
+.section.row.entries.bg-primary.section-no-margin-bottom
+  - if @posts.present?
+    %article.entry.style-grid.style-hero.hero-sm-largest.type-post.col-sm-12.col-md-6.colheight-sm-1.colheight-md-2.colheight-lg-2.colheight-xl-2
+      .ribbon.ribbon-pulled.ribbon-small.ribbon-highlight
+        %a{href: "blog.html"}= @posts.last.category
+      %header.entry-header
+        %h3.entry-title
+          %a{href: "single.html"}= @posts.last.title
+        .entry-meta
+          %span.entry-date
+            %a{href: "blog.html"}= @posts.last.created_at
+          %span.entry-author
+            by
+            %a{href: "blog.html"}= @posts.last.user.username
+      %figure.entry-thumbnail
+        %a.overlay.overlay-primary{href: "single.html"}
+        / to disable lazy loading, remove data-src and data-src-retina
+        %img{alt: "", "data-src" => "http://placehold.it/680x452", "data-src-retina" => "http://placehold.it/1024x680", height: "452", src: "#{@posts.last.images.first.filename_url}", width: "680"}/
+        / fallback for no javascript browsers
+        %noscript
+          %img{alt: "", src: "http://placehold.it/680x452"}/
+  - @posts[0..3].each do |post|
+    -if post
+      %article.entry.style-grid.style-hero.type-post.col-md-6.col-lg-3.colheight-sm-1
+        .ribbon.ribbon-pulled.ribbon-small.ribbon-highlight
+          %a{href: ""}= post.category
+        %header.entry-header
+          %h3.entry-title
+            %a{href: "single.html"}= post.title
+          .entry-meta
+            %span.entry-date
+              %a{href: "blog.html"}= post.created_at
+            %span.entry-author
+              by
+              %a{href: "blog.html"}= post.user.username
+        %figure.entry-thumbnail
+          %a.overlay.overlay-primary{href: "single.html"}
+          / to disable lazy loading, remove data-src and data-src-retina
+          %img{alt: "", "data-src" => "http://placehold.it/480x280", "data-src-retina" => "http://placehold.it/720x420", height: "280", src: "#{post.images.first.filename_url}", width: "480"}/
+          / fallback for no javascript browsers
+          %noscript
+            %img{alt: "", src: "http://placehold.it/480x280"}/
