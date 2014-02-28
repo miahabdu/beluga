@@ -12,7 +12,7 @@
             %img{alt: "", src: "http://placehold.it/80x80"}/
           .media-body
             %h3.entry-title
-              %a{href: "single.html", rel: "bookmark"}= post.title
+              %a{href: post_path(post.id), rel: "bookmark"}= post.title
             .entry-meta
               %span.entry-date
                 %a{href: "blog.html"}= "on #{post.created_at.strftime("%B %d %Y")}"

@@ -5,7 +5,7 @@
         %a{href: "blog.html"}= @posts.last.category
       %header.entry-header
         %h3.entry-title
-          %a{href: "single.html"}= @posts.last.title
+          %a{href: post_path(@posts.last.id)}= @posts.last.title
         .entry-meta
           %span.entry-date
             %a{href: "blog.html"}= @posts.last.created_at
@@ -26,7 +26,7 @@
           %a{href: ""}= post.category
         %header.entry-header
           %h3.entry-title
-            %a{href: "single.html"}= post.title
+            %a{href: post_path(post.id)}= post.title
           .entry-meta
             %span.entry-date
               %a{href: "blog.html"}= post.created_at

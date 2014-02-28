@@ -20,7 +20,7 @@
             .media-body
               %header.entry-header
                 %h3.entry-title
-                  %a{href: "single.html", rel: "bookmark"}= post.title
+                  %a{href: post_path(post.id), rel: "bookmark"}= post.title
                 .entry-meta
                   %span.author
                     by
