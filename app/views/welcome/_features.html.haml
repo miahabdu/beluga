@@ -8,7 +8,7 @@
           %a{href: post_path(@posts.last.id)}= @posts.last.title
         .entry-meta
           %span.entry-date
-            %a{href: "blog.html"}= @posts.last.created_at
+            %a{href: "blog.html"}= "#{time_ago_in_words(@posts.last.created_at)} ago"
           %span.entry-author
             by
             %a{href: "blog.html"}= @posts.last.user.username
@@ -29,7 +29,7 @@
             %a{href: post_path(post.id)}= post.title
           .entry-meta
             %span.entry-date
-              %a{href: "blog.html"}= post.created_at
+              %a{href: "blog.html"}= "#{time_ago_in_words(post.created_at)} ago"
             %span.entry-author
               by
               %a{href: "blog.html"}= post.user.username

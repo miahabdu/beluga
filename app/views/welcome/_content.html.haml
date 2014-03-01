@@ -8,7 +8,7 @@
           %a{href: "#"} Features
         %li.active Blog 2 Columns
     .entries
-      - @posts.order('created_at DESC').each do |post|
+      - @post_pages.each do |post|
         -if post
           %article.entry.style-media.media.type-post
             %figure.media-object.pull-left.entry-thumbnail.hidden-xs
@@ -36,37 +36,38 @@
                   Continue Reading
                   %i.icon.icon-long-arrow-right
     / /.entris
-    %ul.pagination
-      %li
-        %a{href: "#"} «
-      %li
-        %a{href: "#"} 1
-      %li
-        %a{href: "#"} 2
-      %li.active
-        %span 3
-      %li
-        %a{href: "#"} 4
-      %li
-        %a{href: "#"} 5
-      %li
-        %a{href: "#"} 6
-      %li
-        %a{href: "#"} 7
-      %li
-        %a{href: "#"} 8
-      %li
-        %a{href: "#"} 9
-      %li
-        %a{href: "#"} 10
-      %li
-        %a{href: "#"} 5
-      %li
-        %span ...
-      %li
-        %a{href: "#"} 1234
-      %li
-        %a{href: "#"} 1235
-      %li
-        %a{href: "#"} »
+    = paginate @post_pages
+    / %ul.pagination
+    /   %li
+    /     %a{href: "#"} «
+    /   %li
+    /     %a{href: "#"} 1
+    /   %li
+    /     %a{href: "#"} 2
+    /   %li.active
+    /     %span 3
+    /   %li
+    /     %a{href: "#"} 4
+    /   %li
+    /     %a{href: "#"} 5
+    /   %li
+    /     %a{href: "#"} 6
+    /   %li
+    /     %a{href: "#"} 7
+    /   %li
+    /     %a{href: "#"} 8
+    /   %li
+    /     %a{href: "#"} 9
+    /   %li
+    /     %a{href: "#"} 10
+    /   %li
+    /     %a{href: "#"} 5
+    /   %li
+    /     %span ...
+    /   %li
+    /     %a{href: "#"} 1234
+    /   %li
+    /     %a{href: "#"} 1235
+    /   %li
+    /     %a{href: "#"} »
   = render 'sidebar'

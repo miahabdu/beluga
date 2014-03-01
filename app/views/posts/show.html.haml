@@ -28,10 +28,10 @@
     .ribbon.ribbon-highlight
       %ol.breadcrumb.ribbon-inner
         %li
-          %a{href: "#"} Home
+          %a{href: root_path} Home
         %li
-          %a{href: "#"} Social Media
-        %li.active{title: "Postman will send notifications to your flashy smartphone about popular people and their latest shouts"} Postman will send notifications ...
+          %a{href: "#"}= @post.category
+        %li.active{title: "#{@post.title}"}= truncate(@post.title, length: 31)
     %header.page-header
       / .page-meta.pull-right.hidden-xs
       /   %a{href: "#comments"}
