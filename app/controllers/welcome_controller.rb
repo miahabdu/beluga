@@ -28,4 +28,10 @@ class WelcomeController < ApplicationController
     @posts = Post.order('created_at DESC')
     @post_pages = Kaminari.paginate_array(Post.tagged_with(params[:tag]).order('created_at DESC')).page(params[:page]).per(15)
   end
+
+  def search
+    @page_category = "Search results for: #{params[:query]}"
+    @posts = Post.order('created_at DESC')
+    @post_pages = Kaminari.paginate_array(Post.text_search(params[:query]).order('created_at DESC')).page(params[:page]).per(15)
+  end
 end

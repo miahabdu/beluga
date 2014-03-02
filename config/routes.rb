@@ -12,6 +12,7 @@ GastroChub::Application.routes.draw do
   get '/drinks', to: 'welcome#drinks'
   get '/travel', to: 'welcome#travel'
   get '/tags', to: 'welcome#tags'
+  get '/search', to: 'welcome#search'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

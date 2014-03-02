@@ -1,4 +1,9 @@
 class Post < ActiveRecord::Base
+  include PgSearch
+  pg_search_scope :search, against: [:title, :content, :category],
+    using: {tsearch: {dictionary: "english"}},
+    associated_against: {tags: :name}
+
   belongs_to :user
 
   has_many :tag_posts
@@ -7,8 +12,17 @@ class Post < ActiveRecord::Base
 
   accepts_nested_attributes_for :images, allow_destroy: true, reject_if: :all_blank
 
-  scope :next,     -> (id) { where("id > ?", id).order("id ASC").first }
-  scope :previous, -> (id) { where("id < ?", id).order("id DESC").first }
+  scope :next,          -> (id) { where("id > ?", id).order("id ASC").first }
+  scope :previous,      -> (id) { where("id < ?", id).order("id DESC").first }
+  scope :related_posts, -> (id, c) { where("id != ?", id).where(category: c) }
+
+  def self.text_search(query)
+    if query.present?
+      search(query)
+    else
+      scoped
+    end
+  end
 
   def self.tagged_with(name)
     Tag.find_by_name!(name).posts

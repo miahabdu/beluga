@@ -74,7 +74,7 @@
       %aside.widget
         %h4.widget-title Related Posts
         .entries.row
-          - Post.where(category: @post.category).each do |post|
+          - Post.related_posts(@post.id, @post.category).each do |post|
             %article.entry.type-post.style-thumbnail.col-xs-3.col-sm-3
               %figure.entry-thumbnail
                 / to disable lazy loading, remove data-src and data-src-retina

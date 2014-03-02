@@ -25,8 +25,8 @@
           %span.search-toggled-in-icon.fa.fa-times-circle-o.fa-lg
     .search-wrapper.js-stoppropagation
       .search-wrapper-inner
-        %form
-          %input{placeholder: "search ... ", type: "text", value: ""}/
+        = form_tag search_path, method: :get do
+          = text_field_tag :query, params[:query], placeholder: "search ... "
           %button.btn-icon{type: "submit"}
             %span.fa.fa-search
     %ul.nav.navbar-nav
