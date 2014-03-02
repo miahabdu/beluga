@@ -3,9 +3,13 @@ GastroChub::Application.routes.draw do
 
   resources :posts
 
-  devise_for :users, path_names: {sign_in: "login", sign_out: "logout"},
-                   controllers: {omniauth_callbacks: "omniauth_callbacks"}
+  devise_for :users, :path => '', :path_names => {:sign_in => 'login', :sign_out => 'logout'}
+
   root 'welcome#index'
+
+  get '/food', to: 'welcome#food'
+  get '/drinks', to: 'welcome#drinks'
+  get '/travel', to: 'welcome#travel'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

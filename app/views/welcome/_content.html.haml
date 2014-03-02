@@ -4,16 +4,20 @@
       %ol.breadcrumb.ribbon-inner
         %li
           %a{href: "#"} Home
-        %li
-          %a{href: "#"} Features
-        %li.active Blog 2 Columns
+        -if @page_category
+          %li.active
+            %a{href: "#"}= @page_category
+    -if @page_category
+      %header.page-header
+        %h2.page-title
+          = @page_category
     .entries
       - @post_pages.each do |post|
         -if post
           %article.entry.style-media.media.type-post
             %figure.media-object.pull-left.entry-thumbnail.hidden-xs
               / to disable lazy loading, remove data-src and data-src-retina
-              %img{alt: "", "data-src" => "http://placehold.it/230x230", "data-src-retina" => "http://placehold.it/460x460", height: "230", src: "#{post.images.first.filename_url}", width: "230"}/
+              %img{alt: "", "data-src" => "http://placehold.it/230x230", "data-src-retina" => "http://placehold.it/460x460", height: "230", src: "#{post.images.any? ? post.images.first.filename_url : '../assets/placeholder.gif'}", width: "230"}/
               / fallback for no javascript browsers
               %noscript
                 %img{alt: "", src: "http://placehold.it/230x230"}/

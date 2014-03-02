@@ -15,7 +15,7 @@
       %figure.entry-thumbnail
         %a.overlay.overlay-primary{href: post_path(@posts.last.id)}
         / to disable lazy loading, remove data-src and data-src-retina
-        %img{alt: "", "data-src" => "http://placehold.it/680x452", "data-src-retina" => "http://placehold.it/1024x680", height: "452", src: "#{@posts.last.images.first.filename_url}", width: "680"}/
+        %img{alt: "", "data-src" => "http://placehold.it/680x452", "data-src-retina" => "http://placehold.it/1024x680", height: "452", src: "#{@posts.last.images.any? ? @posts.last.images.first.filename_url : '../assets/placeholder.gif'}", width: "680"}/
         / fallback for no javascript browsers
         %noscript
           %img{alt: "", src: "http://placehold.it/680x452"}/
@@ -36,7 +36,7 @@
         %figure.entry-thumbnail
           %a.overlay.overlay-primary{href: post_path(post.id)}
           / to disable lazy loading, remove data-src and data-src-retina
-          %img{alt: "", "data-src" => "http://placehold.it/480x280", "data-src-retina" => "http://placehold.it/720x420", height: "280", src: "#{post.images.first.filename_url}", width: "480"}/
+          %img{alt: "", "data-src" => "http://placehold.it/480x280", "data-src-retina" => "http://placehold.it/720x420", height: "280", src: "#{post.images.any? ? post.images.first.filename_url : '../assets/placeholder.gif'}", width: "480"}/
           / fallback for no javascript browsers
           %noscript
             %img{alt: "", src: "http://placehold.it/480x280"}/

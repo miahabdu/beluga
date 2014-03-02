@@ -6,7 +6,7 @@
       - @posts[0..4].each do |post|
         %article.type-post.style-media-list.media.col-sm-6.col-md-12
           / to disable lazy loading, remove data-src and data-src-retina
-          %img.media-object.pull-left{alt: "", "data-src" => "http://placehold.it/80x80", "data-src-retina" => "http://placehold.it/160x160", height: "80", src: "#{post.images.first.filename_url}", width: "80"}/
+          %img.media-object.pull-left{alt: "", "data-src" => "http://placehold.it/80x80", "data-src-retina" => "http://placehold.it/160x160", height: "80", src: "#{post.images.any? ? post.images.first.filename_url : '../assets/placeholder.gif'}", width: "80"}/
           / fallback for no javascript browsers
           %noscript
             %img{alt: "", src: "http://placehold.it/80x80"}/

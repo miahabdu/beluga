@@ -68,8 +68,21 @@
       /               %a{href: "banner-single.html"} Single
     
       %li
-        %a{href: "#"} Food
+        %a{href: food_path} Food
       %li
-        %a{href: "#"} Drinks
+        %a{href: drinks_path} Drinks
       %li
-        %a{href: "#"} Travel
+        %a{href: travel_path} Travel
+      - if user_signed_in?
+        %li
+          %a{"data-toggle" => "li", href: "#"} Admin
+          .subnav-wrapper
+            %ul.subnav
+              %li
+                = link_to 'Add New Post', new_post_path
+              %li
+                = link_to 'Posts List', posts_path
+              %li
+                = link_to 'Edit Profile', edit_user_registration_path
+              %li
+                = link_to "Logout", destroy_user_session_path, method: :delete

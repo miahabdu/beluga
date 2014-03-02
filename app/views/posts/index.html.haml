@@ -1,20 +1,21 @@
-%h1 Listing posts
+%header.page-header
+  %h2.page-title
+    Listing Posts
+    = link_to 'add post', new_post_path, class: 'btn btn-default'
 
-%table
-  %tr
-    %th
-    %th
-    %th
-    %th
-    %th
-
-  - @posts.each do |post|
+%table.table.table-striped.table-bordered
+  %thead
     %tr
-      %td= post.title
-      %td= link_to 'Show', post
-      %td= link_to 'Edit', edit_post_path(post)
-      %td= link_to 'Destroy', post, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %th
+      %th
+      %th
+      %th
+  %tbody
+    - @posts.each do |post|
+      %tr
+        %td= post.title
+        %td= link_to 'Show', post
+        %td= link_to 'Edit', edit_post_path(post)
+        %td= link_to 'Delete', post, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
-
-= link_to 'New Post', new_post_path
