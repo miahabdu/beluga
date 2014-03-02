@@ -2,7 +2,7 @@
   - if @posts.present?
     %article.entry.style-grid.style-hero.hero-sm-largest.type-post.col-sm-12.col-md-6.colheight-sm-1.colheight-md-2.colheight-lg-2.colheight-xl-2
       .ribbon.ribbon-pulled.ribbon-small.ribbon-highlight
-        %a{href: "blog.html"}= @posts.last.category
+        %a{href: "#{@posts.last.category.downcase}"}= @posts.last.category
       %header.entry-header
         %h3.entry-title
           %a{href: post_path(@posts.last.id)}= @posts.last.title
@@ -23,7 +23,7 @@
     -if post
       %article.entry.style-grid.style-hero.type-post.col-md-6.col-lg-3.colheight-sm-1
         .ribbon.ribbon-pulled.ribbon-small.ribbon-highlight
-          %a{href: ""}= post.category
+          %a{href: "#{post.category.downcase}"}= post.category
         %header.entry-header
           %h3.entry-title
             %a{href: post_path(post.id)}= post.title

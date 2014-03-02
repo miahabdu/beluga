@@ -22,4 +22,10 @@ class WelcomeController < ApplicationController
     @posts = Post.order('created_at DESC')
     @post_pages = Kaminari.paginate_array(Post.where(category: 'Travel').order('created_at DESC')).page(params[:page]).per(15)
   end
+
+  def tags
+    @page_category = "##{params[:tag]}"
+    @posts = Post.order('created_at DESC')
+    @post_pages = Kaminari.paginate_array(Post.tagged_with(params[:tag]).order('created_at DESC')).page(params[:page]).per(15)
+  end
 end

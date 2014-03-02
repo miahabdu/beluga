@@ -33,7 +33,7 @@
                     %a{href: "blog.html"}= "on #{post.created_at.strftime("%B %d %Y")}"
                   %span.category
                     In
-                    %a{href: "blog.html"}= post.category
+                    %a{href: "#{post.category.downcase}"}= post.category
               %p
                 = truncate(post.content, length: 232)
                 %a.more-link{href: post_path(post.id)}

@@ -18,7 +18,7 @@
                 %a{href: "blog.html"}= "on #{post.created_at.strftime("%B %d %Y")}"
               %span.category
                 In
-                %a{href: "blog.html"}= post.category
+                %a{href: "#{post.category.downcase}"}= post.category
   / /.widget
   / %aside#reviewCarousel.widget.carousel.slide
   /   %h2.widget-title.ribbon
@@ -67,6 +67,6 @@
       %span Tags
     .tagcloud
       - Tag.all.uniq.each do |t|
-        %a{href: "#"}= t.name if t
+        = link_to t.name, tags_path(tag: t.name)
   / /.widget
 / /.sidebar col-md-4 col-lg-4 col-xl-3

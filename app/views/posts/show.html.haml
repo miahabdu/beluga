@@ -76,7 +76,7 @@
         %i.icon-tags
         Tags:
         - @post.tags.each do |tag|
-          %a{href: "#"}= tag.name if tag
+          = link_to tag.name, tags_path(tag: tag.name)
       %hr/
       %aside.widget.widget-author.media
         %figure.entry-author-avatar.media-object.avatar.pull-left
