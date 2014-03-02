@@ -7,6 +7,9 @@ class Post < ActiveRecord::Base
 
   accepts_nested_attributes_for :images, allow_destroy: true, reject_if: :all_blank
 
+  scope :next,     -> (id) { where("id > ?", id).order("id ASC").first }
+  scope :previous, -> (id) { where("id < ?", id).order("id DESC").first }
+
   def self.tagged_with(name)
     Tag.find_by_name!(name).posts
   end

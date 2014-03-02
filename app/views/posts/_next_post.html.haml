@@ -1,0 +1,25 @@
+%article.entry.style-grid.style-hero.hero-nav.type-post.col-xs-6.col-sm-6
+  - if @next_post.try(:first).nil?
+    %a{href: post_path(@next_post.id)}
+      %header.entry-header
+        %p.small Next Story
+        %h3.entry-title= @next_post.title
+      %figure.entry-thumbnail
+        .overlay.overlay-primary
+        / to disable lazy loading, remove data-src and data-src-retina
+        %img{alt: "", "data-src" => "http://placehold.it/480x280", "data-src-retina" => "http://placehold.it/720x420", height: "280", src: "#{@next_post.images.any? ? @next_post.images.first.filename_url : '../assets/placeholder.gif'}", width: "480"}/
+        / fallback for no javascript browsers
+        %noscript
+          %img{alt: "", src: "http://placehold.it/480x280"}/
+  - else
+    %a{href: '#'}
+      %header.entry-header
+        %p.small Next Story
+        %h3.entry-title
+      %figure.entry-thumbnail
+        .overlay.overlay-primary
+        / to disable lazy loading, remove data-src and data-src-retina
+        %img{alt: "", "data-src" => "http://placehold.it/480x280", "data-src-retina" => "http://placehold.it/720x420", height: "280", src: "../assets/placeholder.gif", width: "480"}/
+        / fallback for no javascript browsers
+        %noscript
+          %img{alt: "", src: "http://placehold.it/480x280"}/

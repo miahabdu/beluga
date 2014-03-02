@@ -1,28 +1,7 @@
 .section.section-no-margin-bottom.row.entries.bg-primary
-  %article.entry.style-grid.style-hero.hero-nav.type-post.col-xs-6.col-sm-6
-    %a{href: "single.html"}
-      %header.entry-header
-        %p.small Previous Story
-        %h3.entry-title Rumor: The long awaited update for Retina Display is ready to be annaunced on the next event held by them
-      %figure.entry-thumbnail
-        .overlay.overlay-primary
-        / to disable lazy loading, remove data-src and data-src-retina
-        %img{alt: "", "data-src" => "http://placehold.it/480x280", "data-src-retina" => "http://placehold.it/720x420", height: "280", src: "../assets/placeholder.gif", width: "480"}/
-        / fallback for no javascript browsers
-        %noscript
-          %img{alt: "", src: "http://placehold.it/480x280"}/
-  %article.entry.style-grid.style-hero.hero-nav.type-post.col-xs-6.col-sm-6
-    %a{href: "single-full.html"}
-      %header.entry-header
-        %p.small Next Story
-        %h3.entry-title Click here to see single blog post in full mode sit voluptatem accusantium doloremque laudantium
-      %figure.entry-thumbnail
-        .overlay.overlay-primary
-        / to disable lazy loading, remove data-src and data-src-retina
-        %img{alt: "", "data-src" => "http://placehold.it/480x280", "data-src-retina" => "http://placehold.it/720x420", height: "280", src: "../assets/placeholder.gif", width: "480"}/
-        / fallback for no javascript browsers
-        %noscript
-          %img{alt: "", src: "http://placehold.it/480x280"}/
+  = render 'prev_post'
+  = render 'next_post'
+  
 #content.content.section.row
   .col-md-8.bg-base.col-lg-8.col-xl-9
     .ribbon.ribbon-highlight
