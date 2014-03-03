@@ -6,7 +6,7 @@
         %ul.entries.links.links-2-cols
           - Post.pluck(:category).uniq.each do |c|
             %li
-              %a{href: "blog.html"}= c
+              %a{href: "#{c.downcase}"}= c
       / /.col-3
       .clearfix.visible-xs
       .widget.col-xs-6.col-sm-2

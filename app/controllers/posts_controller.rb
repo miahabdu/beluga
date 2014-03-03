@@ -71,6 +71,7 @@ class PostsController < ApplicationController
   # DELETE /posts/1.json
   def destroy
     @post.images.each { |f| f.delete } if @post.images.any?
+    @post.tags.each { |f| f.delete } if @post.tags.any?
     @post.destroy
     respond_to do |format|
       format.html { redirect_to posts_url }
