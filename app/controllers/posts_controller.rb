@@ -32,7 +32,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        @images = params[:images][:filename] rescue nil
+        @images = params[:pics][:filename] rescue nil
         if @images
           @images.each do |i|
             @post_image = @post.images.create!(filename: i, post_id: @post.id)
@@ -52,6 +52,12 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
+        @images = params[:pictures][:filename] rescue nil
+        if @images
+          @images.each do |i|
+            @post_image = @post.images.create!(filename: i, post_id: @post.id)
+          end
+        end
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
         format.json { head :no_content }
       else
@@ -81,6 +87,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :content, :category, :user_id, :tag_list, images_attributes: [:id, :post_id, :filename, :name])
+      params.require(:post).permit(:title, :content, :category, :user_id, :tag_list, pictures_attributes: [:id, :post_id, :filename, :name])
     end
 end

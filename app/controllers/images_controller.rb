@@ -55,8 +55,9 @@ class ImagesController < ApplicationController
   # DELETE /images/1.json
   def destroy
     @image.destroy
+    flash.now[:notice] = 'Image removed.'
     respond_to do |format|
-      format.html { redirect_to images_url }
+      format.html { redirect_to :back }
       format.json { head :no_content }
     end
   end

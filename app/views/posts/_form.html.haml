@@ -20,16 +20,24 @@
         = f.text_field :tag_list, class: 'form-control', placeholder: "Enter tags seperated by commas ie 'bacon, meat, beer, cheese...'"
 
     = f.hidden_field :user_id, value: current_user.id
-    - if @post.new_record?
-      .form-group
-        .col-md-5
-          = f.fields_for :images, html: { multipart: true } do |img|
-            = img.file_field :filename, multiple: true, name: 'images[filename][]'
-    - else
-      - if @post.images.any?
-        - @post.images.each do |i|
-          = image_tag i.filename_url(:thumb)
-          =link_to 'Edit Images', edit_image_path(i)
+    .form-group
+      .col-md-5
+        = f.fields_for :pictures, html: { multipart: true } do |img|
+          = img.file_field :filename, multiple: true, name: 'pictures[filename][]'
+    - if @post.images.any?
+      .gallery.bg-page.flushed-left
+        / <h4 class="gallery-title">Gallery</h4>
+        .row
+          - @post.images.each do |i|
+            .col-xs-3.col-sm-2
+              .col-md-3.pull-right
+                = link_to raw("<i class='fa fa-times-circle-o fa-2x'></i>"), i, :method => :delete, :data => { :confirm => 'Are you sure?' }
+              %a.thumbnail.pull-left{"data-rel" => "prettyPhoto[gallery]", href: "#{i.filename_url}", title: "Image 1", style: 'margin-top: -10%;'}
+                / to disable lazy loading, remove data-src and data-src-retina
+                = image_tag i.filename_url, size: '80x80'
+                / fallback for no javascript browsers
+                %noscript
+                  %img{alt: "", src: "http://placehold.it/80x80"}/
     .form-group
       .col-md-4
         = f.submit 'Save', class: 'btn btn-primary'
