@@ -1,6 +1,7 @@
 class WelcomeController < ApplicationController
   def index
     @posts = Post.all.order('created_at DESC')
+    @featured = Post.featured.order('created_at DESC')
     @post_pages = Post.order('created_at DESC').page(params[:page]).per(5)
     @page_category = nil
   end

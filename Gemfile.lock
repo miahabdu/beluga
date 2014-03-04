@@ -71,6 +71,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
+    colorize (0.6.0)
     debug_inspector (0.0.2)
     devise (3.2.2)
       bcrypt-ruby (~> 3.0)
@@ -233,6 +234,7 @@ DEPENDENCIES
   bootstrap-wysihtml5-rails
   carrierwave
   coffee-rails (~> 4.0.0)
+  colorize
   devise
   font-awesome-rails
   haml-rails

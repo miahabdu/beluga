@@ -15,6 +15,7 @@ class Post < ActiveRecord::Base
   scope :next,          -> (id) { where("id > ?", id).order("id ASC").first }
   scope :previous,      -> (id) { where("id < ?", id).order("id DESC").first }
   scope :related_posts, -> (id, c) { where("id != ?", id).where(category: c) }
+  scope :featured,      -> { where(is_featured: true) }
 
   def self.text_search(query)
     if query.present?

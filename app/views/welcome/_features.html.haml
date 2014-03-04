@@ -1,25 +1,25 @@
 .section.row.entries.bg-primary.section-no-margin-bottom
-  - if @posts.present?
+  - if @featured.present?
     %article.entry.style-grid.style-hero.hero-sm-largest.type-post.col-sm-12.col-md-6.colheight-sm-1.colheight-md-2.colheight-lg-2.colheight-xl-2
       .ribbon.ribbon-pulled.ribbon-small.ribbon-highlight
-        %a{href: "#{@posts.last.category.downcase}"}= @posts.last.category
+        %a{href: "#{@featured.last.category.downcase}"}= @featured.last.category
       %header.entry-header
         %h3.entry-title
-          %a{href: post_path(@posts.last.id)}= @posts.last.title
+          %a{href: post_path(@featured.last.id)}= @featured.last.title
         .entry-meta
           %span.entry-date
-            %a{href: "blog.html"}= "#{time_ago_in_words(@posts.last.created_at)} ago"
+            %a{href: "blog.html"}= "#{time_ago_in_words(@featured.last.created_at)} ago"
           %span.entry-author
             by
-            %a{href: "blog.html"}= @posts.last.user.username
+            %a{href: "blog.html"}= @featured.last.user.username.upcase
       %figure.entry-thumbnail
-        %a.overlay.overlay-primary{href: post_path(@posts.last.id)}
+        %a.overlay.overlay-primary{href: post_path(@featured.last.id)}
         / to disable lazy loading, remove data-src and data-src-retina
-        %img{alt: "", "data-src" => "http://placehold.it/680x452", "data-src-retina" => "http://placehold.it/1024x680", height: "452", src: "#{@posts.last.images.any? ? @posts.last.images.first.filename_url : '../assets/placeholder.gif'}", width: "680"}/
+        %img{alt: "", "data-src" => "http://placehold.it/680x452", "data-src-retina" => "http://placehold.it/1024x680", height: "452", src: "#{@featured.last.images.any? ? @featured.last.images.first.filename_url : '../assets/placeholder.gif'}", width: "680"}/
         / fallback for no javascript browsers
         %noscript
           %img{alt: "", src: "http://placehold.it/680x452"}/
-  - @posts[0..3].each do |post|
+  - @featured[0..3].each do |post|
     -if post
       %article.entry.style-grid.style-hero.type-post.col-md-6.col-lg-3.colheight-sm-1
         .ribbon.ribbon-pulled.ribbon-small.ribbon-highlight

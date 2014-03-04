@@ -28,7 +28,7 @@
                 .entry-meta
                   %span.author
                     by
-                    %a{href: "blog.html"}= post.user.username
+                    %a{href: "blog.html"}= post.user.username.upcase
                   %span.entry-date
                     %a{href: "blog.html"}= "on #{post.created_at.strftime("%B %d %Y")}"
                   %span.category
