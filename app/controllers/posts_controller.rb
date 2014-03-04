@@ -11,6 +11,7 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
     @posts = Post.all
+    @featured = Post.featured
     @next_post = Post.next(@post.id)
     @prev_post = Post.previous(@post.id)
   end
