@@ -17,9 +17,8 @@
         = f.text_field :category, class: 'form-control', placeholder: 'Enter category'
     .form-group
       .col-md-12
-        = f.label :is_featured do
-          = f.check_box :is_featured
-          Feature this post
+        = f.check_box :is_featured
+        Feature this post
     .form-group
       .col-md-12
         = f.text_field :tag_list, class: 'form-control', placeholder: "Enter tags seperated by commas ie 'bacon, meat, beer, cheese...'"
