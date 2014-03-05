@@ -29,7 +29,7 @@
       .entry-meta.indented
         %span.author
           by
-          %a{href: "blog.html"}= @post.user.username
+          %a{href: "blog.html"}= @post.user.username.upcase
         %span.entry-date
           %a{href: "blog.html"}= "on #{@post.created_at.strftime("%B %d %Y")}"
         %span.category
@@ -67,7 +67,7 @@
         .media-body
           %h4.entry-author-name
             By
-            %a{href: "blog.html"}= @post.user.username
+            %a{href: "blog.html"}= @post.user.username.upcase
           %p
             Deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.
       %hr/

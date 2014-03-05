@@ -32,7 +32,7 @@
                 %a{href: "blog.html"}= "#{time_ago_in_words(post.created_at)} ago"
               %span.entry-author
                 by
-                %a{href: "blog.html"}= post.user.username
+                %a{href: "blog.html"}= post.user.username.upcase
           %figure.entry-thumbnail
             %a.overlay.overlay-primary{href: post_path(post.id)}
             / to disable lazy loading, remove data-src and data-src-retina
