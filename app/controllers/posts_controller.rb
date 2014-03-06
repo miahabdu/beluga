@@ -33,7 +33,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        @images = params[:pictures].try([:filename])
+        @images = params[:pictures][:filename] rescue nil
         if @images
           @images.each do |i|
             @post_image = @post.images.create!(filename: i, post_id: @post.id)
@@ -53,7 +53,7 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        @images = params[:pictures].try([:filename])
+        @images = params[:pictures][:filename] rescue nil
         if @images
           @images.each do |i|
             @post_image = @post.images.create!(filename: i, post_id: @post.id)
