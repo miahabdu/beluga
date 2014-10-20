@@ -43,7 +43,7 @@ gem 'haml-rails'
 gem 'paperclip', '~> 3.0'
 gem 'devise'
 gem 'omniauth-twitter'
-gem 'rmagick'
+# gem 'rmagick'
 gem 'carrierwave'
 gem 'fog'
 

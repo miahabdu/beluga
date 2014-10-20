@@ -11,10 +11,7 @@
  *= require pickadate/classic
  *= require pickadate/classic.date
  *= require font-awesome
- *= require base
  *= require bootstrap_and_overrides
- *= require components
- *= require default
  *= require prettyphoto-rails
  *= require bootstrap-wysihtml5/b3
  *= require_self

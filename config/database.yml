@@ -17,7 +17,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: gastro_chub_development
+  database: beluga_development
   pool: 5
   username: abdulmiah
   password:
@@ -46,7 +46,7 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: gastro_chub_test
+  database: beluga_test
   pool: 5
   username: abdulmiah
   password:
@@ -54,7 +54,7 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: gastro_chub_production
+  database: beluga_production
   pool: 5
   username: abdulmiah
   password:

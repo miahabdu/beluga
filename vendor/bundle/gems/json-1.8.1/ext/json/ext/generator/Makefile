@@ -145,8 +145,8 @@ STATIC_LIB =
 
 BINDIR        = $(bindir)
 RUBYCOMMONDIR = $(sitedir)$(target_prefix)
-RUBYLIBDIR = /Users/abdulmiah/Development/gastro_chub/vendor/bundle/gems/json-1.8.1/lib$(target_prefix)
-RUBYARCHDIR = /Users/abdulmiah/Development/gastro_chub/vendor/bundle/gems/json-1.8.1/lib$(target_prefix)
+RUBYLIBDIR = /Users/abdulmiah/Development/beluga/vendor/bundle/gems/json-1.8.1/lib$(target_prefix)
+RUBYARCHDIR = /Users/abdulmiah/Development/beluga/vendor/bundle/gems/json-1.8.1/lib$(target_prefix)
 HDRDIR        = $(rubyhdrdir)/ruby$(target_prefix)
 ARCHHDRDIR    = $(rubyhdrdir)/$(arch)/ruby$(target_prefix)
 

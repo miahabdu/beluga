@@ -1,4 +1,4 @@
-GastroChub::Application.routes.draw do
+Beluga::Application.routes.draw do
   resources :images
 
   resources :posts
@@ -8,9 +8,6 @@ GastroChub::Application.routes.draw do
 
   root 'welcome#index'
 
-  get '/food', to: 'welcome#food'
-  get '/drinks', to: 'welcome#drinks'
-  get '/travel', to: 'welcome#travel'
   get '/tags', to: 'welcome#tags'
   get '/search', to: 'welcome#search'
   

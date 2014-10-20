@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-GastroChub::Application.load_tasks
+Beluga::Application.load_tasks
